@@ -1,0 +1,25 @@
+{
+  "name": "ibar",
+  "version": "1.1.0",
+  "description": "ibar-app.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigotmuniz/ibar.git"
+  },
+  "keywords": [
+    "ibar"
+  ],
+  "author": "Rodrigo Muniz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodrigotmuniz/ibar/issues"
+  },
+  "homepage": "https://github.com/rodrigotmuniz/ibar#readme",
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
