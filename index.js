@@ -1,2 +1,2 @@
 exports.ErrorResponseModel = require('./models/error-response-model').ErrorResponseModel;
-exports.isObject = require('./verifications/is-object').isObject;
+exports.isObject = require('./validations/is-object').isObject;

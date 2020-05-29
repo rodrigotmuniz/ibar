@@ -1,5 +1,3 @@
-const { isObject } = require('../verifications/is-object')
-
 exports.ErrorResponseModel = class ErrorResponseModel {
   constructor(inputData, errorMessage, statusCode, version) {
     this.inputData = inputData;
