@@ -1,5 +1,5 @@
 exports.ErrorResponseModel = class ErrorResponseModel {
-  constructor(inputData, errorMessage, version, statusCode = 400) {
+  constructor(inputData, errorMessage, statusCode = 400, version ) {
     this.inputData = inputData;
     this.errorMessage = errorMessage;
     this.statusCode = statusCode;
