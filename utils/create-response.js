@@ -1,4 +1,5 @@
 const { SuccessResponseModel } = require('../models/success-response-model');
+const { ErrorResponseModel } = require('../models/error-response-model');
 
 exports.createSuccessResponse = (result) => {
   const isFromDb = result.Payload.payload == undefined;
@@ -14,6 +15,7 @@ exports.createSuccessResponse = (result) => {
 }
 
 
-exports.createErrorResponse = (result) => {
-
+exports.createErrorResponse = (inputData, result) => {
+  const isFromDb = result.Payload == undefined;
+  return isFromDb ? new ErrorResponseModel(inputData, result.message, result.statusCode) : result.Payload;
 }

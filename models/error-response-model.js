@@ -3,6 +3,5 @@ exports.ErrorResponseModel = class ErrorResponseModel {
     this.inputData = inputData;
     this.errorMessage = errorMessage;
     this.statusCode = statusCode;
-    this.version = version;
   }
 } 
