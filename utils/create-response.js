@@ -19,3 +19,9 @@ exports.createErrorResponse = (inputData, result) => {
   const isFromDb = result.Payload == undefined;
   return isFromDb ? new ErrorResponseModel(inputData, result.message, result.statusCode) : result.Payload;
 }
+
+exports.createResponse = (result, inputData) => {
+  if (result.message || result.Payload && result.Payload.errorMessage)
+    return this.createErrorResponse(inputData, result);
+  return this.createSuccessResponse(result);
+}
