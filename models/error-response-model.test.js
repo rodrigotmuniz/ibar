@@ -14,7 +14,7 @@ describe('constructor(inputData, errorMessage, statusCode, version)', () => {
       version: 'version',
     };
 
-    const received = new ErrorResponseModel(inputData, errorMessage, statusCode, version);
+    const received = new ErrorResponseModel(inputData, errorMessage, version, statusCode);
     expect(received).toEqual(expected);
   })
 })
