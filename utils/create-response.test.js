@@ -125,15 +125,7 @@ describe('createResponse = (result, inputData)', () => {
   test('should return a new SuccessResponseModel when request comes from function and is valid', async () => {
     const result = {
       StatusCode: 'statusCode',
-      Payload: {
-        statusCode: 'statusCode',
-        payload: {
-          item: 'item',
-          items: [],
-          count: 'count',
-          scannedCount: 'scannedCount'
-        }
-      }
+      Payload: '{"statusCode":"statusCode","payload":{"item":"item","items":[],"count":"count","scannedCount":"scannedCount"}}'
     };
 
     const expected = {
@@ -170,11 +162,7 @@ describe('createResponse = (result, inputData)', () => {
   test('should return a new ErrorResponseModel when request comes from function and is valid', async () => {
     const inputData = 'inputData';
     const result = {
-      Payload: {
-        inputData: 'inputData',
-        errorMessage: 'errorMessage',
-        statusCode: 'statusCode',
-      }
+      Payload: '{"inputData":"inputData","errorMessage":"errorMessage","statusCode":"statusCode"}'
     };
 
     const expected = {
