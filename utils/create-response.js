@@ -3,7 +3,6 @@ const { ErrorResponseModel } = require('../models/error-response-model');
 
 exports.createSuccessResponse = (result) => {
   const isFromDb = result.Payload.payload == undefined;
-  // if (!isFromDb) result.Payload = JSON.parse(result.Payload);
   const payload = isFromDb ? result.Payload : {
     Item: result.Payload.payload.item,
     Items: result.Payload.payload.items,
@@ -18,7 +17,6 @@ exports.createSuccessResponse = (result) => {
 
 exports.createErrorResponse = (inputData, result) => {
   const isFromDb = result.Payload == undefined;
-  // if (!isFromDb) result.Payload = JSON.parse(result.Payload);
   return isFromDb ? new ErrorResponseModel(inputData, result.message, result.statusCode) : result.Payload;
 }
 
