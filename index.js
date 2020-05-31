@@ -5,6 +5,7 @@ exports.createInvokeParams = require('./utils/create-invoke-params').createInvok
 exports.createResponse = require('./utils/create-response').createResponse;
 exports.createErrorResponse = require('./utils/create-response').createErrorResponse;
 exports.createSuccessResponse = require('./utils/create-response').createSuccessResponse;
+exports.req = require('./utils/req-utils');
 
 exports.isObject = require('./validations/is-object').isObject;
 
