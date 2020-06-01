@@ -1,18 +1,18 @@
 const { createInvokeParams } = require('./create-invoke-params');
 
-describe('createInvokeParams = (functionName, method, tableName, stage = "dev", searchParams = {})', () => {
+describe('createInvokeParams = (functionName, method, tableName, stage = "dev", dbParams = {})', () => {
   test('should return a successful object when all params sended are valid.', async () => {
     const functionName = 'functionName';
     const method = 'method';
     const tableName = 'tableName';
     const stage = 'stage';
-    const searchParams = { key: 'value' };
+    const dbParams = { key: 'value' };
 
     const payload = {
       method: method,
-      searchParams: searchParams
+      dbParams: dbParams
     };
-    payload.searchParams.TableName = tableName
+    payload.dbParams.TableName = tableName
 
     const expected = {
       FunctionName: functionName,
@@ -20,7 +20,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
       Payload: JSON.stringify(payload),
     };
 
-    const received = createInvokeParams(functionName, method, tableName, stage, searchParams);
+    const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
     expect(received).toEqual(expected);
   })
 
@@ -29,16 +29,16 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
     const method = 'method';
     const tableName = 'tableName';
     const stage = 'stage';
-    const searchParams = { key: 'value' };
+    const dbParams = { key: 'value' };
 
     for (let functionName of functionNames) {
       const payload = {
         method: method,
-        searchParams: searchParams
+        dbParams: dbParams
       };
-      payload.searchParams.TableName = tableName;
+      payload.dbParams.TableName = tableName;
 
-      const inputData = { functionName, method, tableName, stage, searchParams };
+      const inputData = { functionName, method, tableName, stage, dbParams };
 
       const expected = {
         errorMessage: '"functionName" should be a string.',
@@ -46,7 +46,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, searchParams);
+      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
   })
@@ -56,16 +56,16 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
     const methods = [1, true, null, undefined, {}, [], () => { }];
     const tableName = 'tableName';
     const stage = 'stage';
-    const searchParams = { key: 'value' };
+    const dbParams = { key: 'value' };
 
     for (let method of methods) {
       const payload = {
         method: method,
-        searchParams: searchParams
+        dbParams: dbParams
       };
-      payload.searchParams.TableName = tableName;
+      payload.dbParams.TableName = tableName;
 
-      const inputData = { functionName, method, tableName, stage, searchParams };
+      const inputData = { functionName, method, tableName, stage, dbParams };
 
       const expected = {
         errorMessage: '"method" should be a string.',
@@ -73,7 +73,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, searchParams);
+      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
   })
@@ -82,16 +82,16 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
     const method = 'method';
     const tableNames = [1, true, null, undefined, {}, [], () => { }];
     const stage = 'stage';
-    const searchParams = { key: 'value' };
+    const dbParams = { key: 'value' };
 
     for (let tableName of tableNames) {
       const payload = {
         method: method,
-        searchParams: searchParams
+        dbParams: dbParams
       };
-      payload.searchParams.TableName = tableName;
+      payload.dbParams.TableName = tableName;
 
-      const inputData = { functionName, method, tableName, stage, searchParams };
+      const inputData = { functionName, method, tableName, stage, dbParams };
 
       const expected = {
         errorMessage: '"tableName" should be a string.',
@@ -99,7 +99,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, searchParams);
+      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
   })
@@ -108,16 +108,16 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
     const method = 'method';
     const tableName = 'tableName';
     const stages = [1, true, null, {}, [], () => { }];
-    const searchParams = { key: 'value' };
+    const dbParams = { key: 'value' };
 
     for (let stage of stages) {
       const payload = {
         method: method,
-        searchParams: searchParams
+        dbParams: dbParams
       };
-      payload.searchParams.TableName = tableName;
+      payload.dbParams.TableName = tableName;
 
-      const inputData = { functionName, method, tableName, stage, searchParams };
+      const inputData = { functionName, method, tableName, stage, dbParams };
 
       const expected = {
         errorMessage: '"stage" should be a string or undefined.',
@@ -125,31 +125,31 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, searchParams);
+      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
   })
-  test('should return an error message when "searchParams" is not an object or undefined', async () => { 
+  test('should return an error message when "dbParams" is not an object or undefined', async () => { 
     const functionName = 'functionName';
     const method = 'method';
     const tableName = 'tableName';
     const stage = 'stage';
-    const searchParamsList = [1, true, null, '', [], () => { }];
+    const dbParamsList = [1, true, null, '', [], () => { }];
 
-    for (let searchParams of searchParamsList) {
+    for (let dbParams of dbParamsList) {
       const payload = {
         method: method,
-        searchParams: searchParams
+        dbParams: dbParams
       };
-      const inputData = { functionName, method, tableName, stage, searchParams };
+      const inputData = { functionName, method, tableName, stage, dbParams };
 
       const expected = {
-        errorMessage: '"searchParams" should be an object or undefined.',
+        errorMessage: '"dbParams" should be an object or undefined.',
         statusCode: 400,
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, searchParams);
+      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
    })
