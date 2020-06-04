@@ -7,6 +7,7 @@ exports.createErrorResponse = require('./utils/create-response').createErrorResp
 exports.createSuccessResponse = require('./utils/create-response').createSuccessResponse;
 exports.req = require('./utils/req-utils');
 
+exports.isEmptyObject = require('./validations/is-empty-object').isEmptyObject;
 exports.isObject = require('./validations/is-object').isObject;
 
 exports.aws_sdk = require('./mocks/aws_sdk');
