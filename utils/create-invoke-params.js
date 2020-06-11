@@ -11,10 +11,16 @@ exports.createInvokeParams = (functionName, method, tableName, stage = 'dev', db
   if (!isObject(dbParams)) return new ErrorResponseModel(inputData, '"dbParams" should be an object or undefined.', 400);
 
   const payload = {
+    tableName: tableName,
     method: method,
-    dbParams: dbParams
+    body: dbParams.body,
+    projectionExpression: dbParams.projectionExpression,
+    keyConditionExpression: dbParams.keyConditionExpression,
+    filterExpression: dbParams.filterExpression,
+    expressionAttributeNames: dbParams.expressionAttributeNames,
+    expressionAttributeValues: dbParams.expressionAttributeValues,
+    params: dbParams.params
   };
-  payload.dbParams.TableName = tableName 
 
   return {
     FunctionName: functionName,

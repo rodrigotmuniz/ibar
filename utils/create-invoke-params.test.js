@@ -6,13 +6,33 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
     const method = 'method';
     const tableName = 'tableName';
     const stage = 'stage';
-    const dbParams = { key: 'value' };
+    const body = {};
+    const projectionExpression = 'projectionExpression';
+    const keyConditionExpression = 'keyConditionExpression';
+    const filterExpression = 'keyConditionExpression';
+    const expressionAttributeNames = {};
+    const expressionAttributeValues = {};
+    const params = { path: {} };
+
+    const dbParams = {
+      body: body,
+      projectionExpression: projectionExpression,
+      keyConditionExpression: keyConditionExpression,
+      expressionAttributeNames: expressionAttributeNames,
+      expressionAttributeValues: expressionAttributeValues,
+      params: params
+    }
 
     const payload = {
+      tableName: tableName,
       method: method,
-      dbParams: dbParams
+      body: body,
+      projectionExpression: projectionExpression,
+      keyConditionExpression: keyConditionExpression,
+      expressionAttributeNames: expressionAttributeNames,
+      expressionAttributeValues: expressionAttributeValues,
+      params: params
     };
-    payload.dbParams.TableName = tableName
 
     const expected = {
       FunctionName: functionName,
@@ -129,7 +149,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
       expect(received).toEqual(expected);
     }
   })
-  test('should return an error message when "dbParams" is not an object or undefined', async () => { 
+  test('should return an error message when "dbParams" is not an object or undefined', async () => {
     const functionName = 'functionName';
     const method = 'method';
     const tableName = 'tableName';
@@ -152,7 +172,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
       const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
-   })
+  })
 
 })
 
