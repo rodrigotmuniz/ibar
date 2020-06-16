@@ -19,9 +19,10 @@ exports.createInvokeParams = (functionName, method, tableName, stage = 'dev', db
     filterExpression: dbParams.filterExpression,
     expressionAttributeNames: dbParams.expressionAttributeNames,
     expressionAttributeValues: dbParams.expressionAttributeValues,
-    params: dbParams.params
+    params: dbParams.params,
+    keys: dbParams.keys
   };
-
+ 
   return {
     FunctionName: functionName,
     Qualifier: stage,
