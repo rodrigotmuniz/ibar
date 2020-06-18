@@ -8,7 +8,6 @@ exports.getPayload = (result) => {
     const { inputData, errorMessage, statusCode } = result.Payload;
     return new ErrorResponseModel(inputData, errorMessage, statusCode);
   }
-  console.log(result)
-  const payload = result.Payload.payload;
+  const payload = result.Payload.payload;hf
   return payload;
 }
