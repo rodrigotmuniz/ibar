@@ -1,4 +1,4 @@
-const { ErrorResponseModel, isObject, SuccessResponseModel, req, createInvokeParams, getPayload } = require('./index');
+const { SuccessResponseModel } = require('./index');
 
 const input = {
   ExecutedVersion: '23',
@@ -7,5 +7,4 @@ const input = {
   StatusCode: 200
 }
 
-const result = getPayload(input);
-console.log(JSON.stringify(result, null, 2))
+console.log(JSON.stringify(new SuccessResponseModel(1), null, 2))
