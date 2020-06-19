@@ -40,7 +40,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
       Payload: JSON.stringify(payload),
     };
 
-    const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
+    const [received] = createInvokeParams(functionName, method, tableName, stage, dbParams);
     expect(received).toEqual(expected);
   })
 
@@ -66,7 +66,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
+      const [_, received] = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
   })
@@ -93,7 +93,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
+      const [_, received] = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
   })
@@ -119,7 +119,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
+      const [_, received] = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
   })
@@ -145,7 +145,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
+      const [_, received] = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
   })
@@ -169,7 +169,7 @@ describe('createInvokeParams = (functionName, method, tableName, stage = "dev", 
         inputData: inputData
       };
 
-      const received = createInvokeParams(functionName, method, tableName, stage, dbParams);
+      const [_, received] = createInvokeParams(functionName, method, tableName, stage, dbParams);
       expect(received).toEqual(expected);
     }
   })

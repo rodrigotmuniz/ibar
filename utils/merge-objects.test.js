@@ -1,4 +1,5 @@
-const { mergeObjects } = require('./merge-objects')
+const { mergeObjects } = require('./merge-objects');
+const { ErrorResponseModel } = require('../models/error-response-model');
 
 describe('mergeObjects = (actualObject, newObject)', () => {
   test('should return success object', async () => {
@@ -40,36 +41,32 @@ describe('mergeObjects = (actualObject, newObject)', () => {
       }
     };;
 
-    const received = mergeObjects(actualObject, newObject);
+    const [received] = mergeObjects(actualObject, newObject);
     expect(received).toEqual(expected);
 
   });
 
   test('should return error message when actualObject is not object', async () => {
-    const expected = 'actualObject should be an object.';
     const actualObjects = [1, '', 'a', [], () => { }, null, undefined, false];
     const newObject = {};
 
     for (let actualObject of actualObjects) {
-      try {
-        mergeObjects(actualObject, newObject);
-      } catch (received) {
-        expect(received).toEqual(expected);
-      }
+      const expected = new ErrorResponseModel(actualObject, 'actualObject should be an object.', 400);
+      const [_, received] = mergeObjects(actualObject, newObject);
+
+      expect(received).toEqual(expected);
     }
   });
 
   test('should return error message when newObject is not object', async () => {
-    const expected = 'newObject should be an object.';
     const newObjects = [1, '', 'a', [], () => { }, null, undefined, false];
     const actualObject = {};
 
     for (let newObject of newObjects) {
-      try {
-        mergeObjects(actualObject, newObject);
-      } catch (received) {
-        expect(received).toEqual(expected);
-      }
+      const expected = new ErrorResponseModel(newObject, 'newObject should be an object.', 400);
+      const [_, received] = mergeObjects(actualObject, newObject);
+
+      expect(received).toEqual(expected);
     }
   });
 

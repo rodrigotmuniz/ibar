@@ -1,6 +1,6 @@
 {
   "name": "ibar",
-  "version": "1.13.2",
+  "version": "1.13.3",
   "description": "ibar-app.com",
   "main": "index.js",
   "scripts": {
@@ -23,3 +23,6 @@
     "jest": "^26.0.1"
   }
 }
+
+
+
