@@ -12,15 +12,13 @@ describe('constructor(payload, statusCode)', () => {
 
     const expected = {
       statusCode: 'statusCode',
-      payload: {
-        item: 'item',
-        items: [],
-        count: 'count',
-        scannedCount: 'scannedCount'
-      }
+      item: 'item',
+      items: [],
+      count: 'count',
+      scannedCount: 'scannedCount'
     };
 
-    const received = new SuccessResponseModel(payload, statusCode);
+    const received = new SuccessResponseModel(payload.Item, payload.Items, payload.Count, payload.ScannedCount, statusCode);
     expect(received).toEqual(expected);
   })
-})
+}) 

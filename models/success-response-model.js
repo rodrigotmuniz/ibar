@@ -1,11 +1,9 @@
-exports.SuccessResponseModel = class SuccessResponseModel {
-  constructor(payload, statusCode) {
+exports.SuccessResponseModel = class {
+  constructor(item, items, count, scannedCount, statusCode) {
     this.statusCode = statusCode;
-    this.payload = {
-      item: payload.Item,
-      items: payload.Items,
-      count: payload.Count,
-      scannedCount: payload.ScannedCount
-    };
+    this.item = item;
+    this.items = items;
+    this.count = count;
+    this.scannedCount = scannedCount
   }
 } 
