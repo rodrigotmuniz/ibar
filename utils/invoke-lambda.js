@@ -1,4 +1,6 @@
-exports.invokeLambda = async (invokeParams) => {
+
+
+exports.invokeLambda = async (lambda, invokeParams) => {
   const invokeResult = await lambda.invoke(invokeParams).promise();
   if (invokeResult.FunctionError) throw JSON.parse(invokeResult.Payload).errorMessage;
 
