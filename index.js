@@ -3,6 +3,7 @@ exports.SuccessResponseModel = require('./models/success-response-model').Succes
 
 exports.createInvokeParams = require('./utils/create-invoke-params').createInvokeParams;
 exports.getPayload = require('./utils/get-payload').getPayload;
+exports.invokeLambda = require('./utils/invoke-lambda').invokeLambda;
 exports.mergeObjects = require('./utils/merge-objects').mergeObjects;
 exports.req = require('./utils/req-utils');
 
