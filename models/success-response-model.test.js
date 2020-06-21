@@ -18,7 +18,13 @@ describe('constructor(payload, statusCode)', () => {
       scannedCount: 'scannedCount'
     };
 
-    const received = new SuccessResponseModel(payload.Item, payload.Items, payload.Count, payload.ScannedCount, statusCode);
+    const received = new SuccessResponseModel({
+      item: payload.Item,
+      items: payload.Items,
+      count: payload.Count,
+      scannedCount: payload.ScannedCount,
+      statusCode: statusCode
+    });
     expect(received).toEqual(expected);
   })
-}) 
+})  

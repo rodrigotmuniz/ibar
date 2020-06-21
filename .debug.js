@@ -1,4 +1,4 @@
-const { SuccessResponseModel } = require('./index');
+const { invokeLambda } = require('./index');
 
 const input = {
   ExecutedVersion: '23',
@@ -6,5 +6,10 @@ const input = {
 ,
   StatusCode: 200
 }
+
+invokeLambda({
+  functionName: 'foo',
+  dbParams: 'bah'
+})
 
 console.log(JSON.stringify(new SuccessResponseModel(1), null, 2))
