@@ -41,7 +41,7 @@ describe('mergeObjects = (actualObject, newObject)', () => {
       }
     };;
 
-    const [received] = mergeObjects(actualObject, newObject);
+    const received = mergeObjects(actualObject, newObject);
     expect(received).toEqual(expected);
 
   });
@@ -52,10 +52,10 @@ describe('mergeObjects = (actualObject, newObject)', () => {
 
     for (let actualObject of actualObjects) {
       const expected = new ErrorResponseModel(actualObject, 'actualObject should be an object.', 400);
-      const [_, received] = mergeObjects(actualObject, newObject);
 
-      expect(received).toEqual(expected);
-    }
+      try { mergeObjects(actualObject, newObject); }
+      catch (received) { expect(received).toEqual(expected); }
+    } 
   });
 
   test('should return error message when newObject is not object', async () => {
@@ -64,9 +64,9 @@ describe('mergeObjects = (actualObject, newObject)', () => {
 
     for (let newObject of newObjects) {
       const expected = new ErrorResponseModel(newObject, 'newObject should be an object.', 400);
-      const [_, received] = mergeObjects(actualObject, newObject);
 
-      expect(received).toEqual(expected);
+      try { mergeObjects(actualObject, newObject); }
+      catch (received) { expect(received).toEqual(expected); }
     }
   });
 
