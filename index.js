@@ -6,6 +6,7 @@ exports.getPayload = require('./utils/get-payload').getPayload;
 exports.invokeLambda = require('./utils/invoke-lambda').invokeLambda;
 exports.mergeObjects = require('./utils/merge-objects').mergeObjects;
 exports.req = require('./utils/req-utils');
+exports.throwErrorResponseModel = require('./utils/throw-error-response-model').throwErrorResponseModel;
 
 exports.isEmptyObject = require('./validations/is-empty-object').isEmptyObject;
 exports.isObject = require('./validations/is-object').isObject;
