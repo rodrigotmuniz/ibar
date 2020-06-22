@@ -2,6 +2,7 @@ exports.ErrorResponseModel = require('./models/error-response-model').ErrorRespo
 exports.SuccessResponseModel = require('./models/success-response-model').SuccessResponseModel;
 
 exports.createInvokeParams = require('./utils/create-invoke-params').createInvokeParams;
+exports.debugResult = require('./utils/debug-result').debugResult;
 exports.getPayload = require('./utils/get-payload').getPayload;
 exports.invokeLambda = require('./utils/invoke-lambda').invokeLambda;
 exports.mergeObjects = require('./utils/merge-objects').mergeObjects;
